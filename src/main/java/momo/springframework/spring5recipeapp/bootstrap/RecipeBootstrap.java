@@ -1,5 +1,6 @@
 package momo.springframework.spring5recipeapp.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import momo.springframework.spring5recipeapp.domain.*;
 import momo.springframework.spring5recipeapp.repositories.CategoryRepository;
 import momo.springframework.spring5recipeapp.repositories.RecipeRepository;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
@@ -28,6 +30,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading bootstrap data.");
     }
 
     private List<Recipe> getRecipes() {
