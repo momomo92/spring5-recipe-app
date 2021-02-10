@@ -28,6 +28,6 @@ class IndexControllerTest {
 
     @Test
     void getIndexPag() {
-        assertEquals(indexController.getIndexPag(model), "index");
+        assertEquals("index", indexController.getIndexPag(model));
     }
 }
